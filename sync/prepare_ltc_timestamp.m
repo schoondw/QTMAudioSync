@@ -6,7 +6,9 @@ function [ts_admin]=prepare_ltc_timestamp(varargin)
 % Main parameters
 ltc_track_name='LTC';
 % max_time_int=3; % Maximum time interval at beginning of file to decode
-time_stamp_admin_file='smpte_time_stamp_admin.csv';
+% time_stamp_admin_file='smpte_time_stamp_admin.csv';
+sync_admin_file = 'admin.xlsx';
+audio_data_sheet = 'audio_data';
 fps_dummy=30; % Fixed value (seems only to matter for memory allocation and consistency checks in SMPTE_decoder)
 
 % Paths (relative to current pos)
@@ -102,7 +104,11 @@ ts_admin=struct(...
     'N_audio',nSamp,...
     'fps_smpte',fps_smpte);
 
-write_dat(ts_admin,time_stamp_admin_file);
+% write_dat(ts_admin,time_stamp_admin_file);
+
+% Write to Excel (test)
+ts_tab = struct2table(ts_admin);
+writetable(ts_tab,sync_admin_file,'Sheet',audio_data_sheet);
 
 
 

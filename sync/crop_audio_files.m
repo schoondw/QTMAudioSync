@@ -4,7 +4,8 @@ function crop_audio_files(varargin)
 % The cropped files are put in a separate subfolder (default: Sync)
 
 %% Script parameters
-sync_admin_file='sync_admin.csv';
+sync_admin_file='admin.xlsx';
+sync_admin_sheet = 'sync_admin';
 
 mocap_path='QTM';
 audio_path='Audio';
@@ -20,11 +21,12 @@ for p1=1:length(opts)
 end
 
 %% Process files
-if ~isdir(sync_path)
+if ~isfolder(sync_path)
     mkdir(sync_path);
 end
 
-admin=read_dat(sync_admin_file);
+% admin=read_dat(sync_admin_file);
+admin = readtable(sync_admin_file,'Sheet',sync_admin_sheet);
 
 for i1=1:length(admin.mc_file)
     if isfield(admin,'skip') && admin.skip(i1)==1

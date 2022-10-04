@@ -15,8 +15,9 @@ P=struct(... % General sync parameters
     'sync_path','.',... 'Audio Synced',... % (sub)folder to which cropped audio files are written
     'ltc_track_name','LTC',...'LTC',... % Name of audio track containing the recorded SMPTE signal (linear time code)
     ...
-    'time_stamp_admin_file','audio_time_stamp_admin.txt',... % Time stamp admin (decoded LTC) for audio files (auto-generated)
-    'sync_admin_file','sync_admin.txt',... % mocap-audio pairing and audio cropping parameters (auto-generated)
+    'sync_admin_file','sync_admin.xlsx',... % File containing all sync information
+    'audio_data_sheet','audio_data',... % Time stamp admin (decoded LTC) for audio files (auto-generated)
+    'sync_admin_sheet','sync_admin',... % mocap-audio pairing and audio cropping parameters (auto-generated)
     'sync_audio_suffix','track'... % rename method: track/file; 'track' assumes AudioDesk file name convention (track name and index, e.g. MIC1-02.wav)
     );
 
