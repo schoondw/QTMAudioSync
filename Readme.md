@@ -16,11 +16,11 @@ Latest update: 2018-04-16
 Add this folder with its subfolders to the Matlab path.
 
 The script "qtm_mocap_audio_sync_using_smpte.m" in the subfolder "scripts_and_pipelines" is the main script for pairing and cropping audio files based on SMPTE time code.
-The scripts can be performed at once or in steps (per cell). The results are stored in text files, allowing to review the results. The steps:
+The scripts can be performed at once or in steps (per cell). The results are stored in an Excel file, allowing to review the results. The steps:
 1) Specify parameter structure, for example regarding the file naming and the folder structure (location of mocap and audio input and output files). The values can be edited.
-2) Pairing of the audio files based on an internal time reference from the sequences (BWF standard). The results are stored in a text file (tab separated values).
-3) Pairing of mocap files with audio files based on SMPTE time code. The results are stored in a text file (tab separated values).
-4) Cropping of the audio files, as calculated in the previous steps. The resulting audio files are named after the mocap file with the audio file name (corresponding to track in AudioDesk) as a suffix.
+2) Pairing of the audio files based on an internal time reference from the sequences (BWF standard). The results are stored in a sheet in the Excel file.
+3) Pairing of mocap files with audio files based on SMPTE time code. The results are stored in a sheet in the Excel file.
+4) Cropping of the audio files based on the information stored in the Excel file. The resulting audio files are named after the mocap file with the audio file name (corresponding to track in AudioDesk) as a suffix.
 
 The QTM files need to be exported to Matlab. Please make sure that TimeCode is checked in the export settings.
 
@@ -48,16 +48,19 @@ Change the Matlab working directory to the subfolder "examples".
 
 Run the script "qtm_mocap_audio_sync_using_smpte.m" with the parameters below (first cell of the script).
 
-P=struct(... % General sync parameters
-    'mocap_path','.',... % (sub)folder containing mocap files (QTM exported .mat files)
-    'audio_path','Audio Files',... % (sub)folder containing audio files (BWF format, .wav)
-    'sync_path','.',... % (sub)folder to which cropped audio files are written
-    'ltc_track_name','LTC',... % Name of audio track containing the recorded SMPTE signal (linear time code)
+```matlab
+P = struct(... % General sync parameters
+    'mocap_path','.',... 'QTM-mat',... % (sub)folder containing mocap files (QTM exported .mat files)
+    'audio_path','Audio Files',... 'Audio',... % (sub)folder containing audio files (BWF format, .wav)
+    'sync_path','.',... 'Audio Synced',... % (sub)folder to which cropped audio files are written
+    'ltc_track_name','LTC',...'LTC',... % Name of audio track containing the recorded SMPTE signal (linear time code)
     ...
-    'time_stamp_admin_file','audio_time_stamp_admin.txt',... % Time stamp admin (decoded LTC) for audio files (auto-generated)
-    'sync_admin_file','sync_admin.txt',... % mocap-audio pairing and audio cropping parameters (auto-generated)
+    'sync_admin_file','sync_admin.xlsx',... % File containing all sync information
+    'audio_data_sheet','audio_data',... % Time stamp admin (decoded LTC) for audio files (auto-generated)
+    'sync_admin_sheet','sync_admin',... % mocap-audio pairing and audio cropping parameters (auto-generated)
     'sync_audio_suffix','track'... % rename method: track/file; 'track' assumes AudioDesk file name convention (track name and index, e.g. MIC1-02.wav)
     );
+```
 
-The script should add to text files "audio_time_stamp_admin.txt" and "sync_admin.txt" and three audio files to the current working directory (see content of "example output" folder).
+The script should add the sync_admin.xlsx file with synchronization info and three audio files to the current working directory (see content of "example output" folder).
 
