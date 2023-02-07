@@ -8,7 +8,7 @@ This is a trial version. Please do not distribute.
 
 For further questions, contact Erwin Schoonderwaldt at erwin.schoonderwaldt@qualisys.se
 
-Latest update: 2018-04-16
+Latest update: 2022-10-04
 
 
 ## Brief instructions
