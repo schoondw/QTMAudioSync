@@ -10,7 +10,7 @@
 %   names (use '.' to refer to current dir)
 
 P=struct(... % General sync parameters
-    'mocap_path','.',... 'QTM-mat',... % (sub)folder containing mocap files (QTM exported .mat files)
+    'mocap_path','QTM-mat',... % (sub)folder containing mocap files (QTM exported .mat files)
     'audio_path','Audio Files',... 'Audio',... % (sub)folder containing audio files (BWF format, .wav)
     'sync_path','.',... 'Audio Synced',... % (sub)folder to which cropped audio files are written
     'ltc_track_name','LTC',...'LTC',... % Name of audio track containing the recorded SMPTE signal (linear time code)
