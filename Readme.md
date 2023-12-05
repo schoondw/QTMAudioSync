@@ -4,8 +4,6 @@ A toolbox for synchronizing audio files with QTM mocap files using SMPTE time co
 
 Developed by Erwin Schoonderwaldt
 
-This is a trial version. Please do not distribute.
-
 For further questions, contact Erwin Schoonderwaldt at erwin.schoonderwaldt@qualisys.se
 
 Latest update: 2022-10-04
